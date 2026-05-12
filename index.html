@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HUB de Adquirencia - Redsys API Console</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/console.css">
+    <link rel="stylesheet" href="css/docs.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-brand">
+                <div class="logo">
+                    <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Dark background -->
+                        <rect width="44" height="44" rx="10" fill="#111111"/>
+                        <!-- Flame shape (left, golden-orange gradient) -->
+                        <defs>
+                            <linearGradient id="flameGrad" x1="10" y1="30" x2="18" y2="8" gradientUnits="userSpaceOnUse">
+                                <stop offset="0%" stop-color="#f97316"/>
+                                <stop offset="100%" stop-color="#fbbf24"/>
+                            </linearGradient>
+                        </defs>
+                        <!-- Flame body -->
+                        <path d="M18 30 C18 30 10 26 10 19 C10 13 15 10 15 10 C15 10 13 15 17 17 C17 17 15 12 20 9 C20 9 18 15 22 17 C22 17 24 13 23 9 C23 9 28 13 26 20 C26 20 28 17 27 14 C27 14 31 18 29 24 C29 24 27 28 24 30 C22 31.5 18 30 18 30Z" fill="url(#flameGrad)"/>
+                        <!-- Inner flame cutout -->
+                        <path d="M20 28 C20 28 15 25 16 20 C16 20 18 22 19 21 C19 21 18 18 21 16 C21 16 20 20 23 21 C23 21 25 19 24 17 C24 17 27 20 25 25 C25 25 23 28 20 28Z" fill="#111111" opacity="0.6"/>
+                        <!-- Hub/share icon (right, solid orange) -->
+                        <circle cx="33" cy="17" r="2.5" fill="#f97316"/>
+                        <circle cx="33" cy="27" r="2.5" fill="#f97316"/>
+                        <circle cx="27" cy="22" r="3.5" fill="none" stroke="#f97316" stroke-width="2"/>
+                        <line x1="29.5" y1="20.5" x2="31" y2="18.5" stroke="#f97316" stroke-width="2" stroke-linecap="round"/>
+                        <line x1="29.5" y1="23.5" x2="31" y2="25.5" stroke="#f97316" stroke-width="2" stroke-linecap="round"/>
+                        <circle cx="38" cy="22" r="2.5" fill="#f97316"/>
+                        <line x1="30.5" y1="22" x2="35.5" y2="22" stroke="#f97316" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <div class="header-brand-text">
+                    <h1>Acquirer API Hub</h1>
+                </div>
+                <h1>HUB de Adquirencia</h1>
+                <span class="version-badge">v1.0</span>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-outline" id="btn-settings" title="Configuración">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <div class="app-body">
+            <!-- Sidebar -->
+            <nav class="sidebar" id="sidebar">
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title" data-toggle="section-config">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4"/></svg>
+                        Configuración General
+                    </div>
+                    <ul class="sidebar-links" id="section-config">
+                        <li><a href="#" data-view="config-general" class="active">Entorno y Credenciales</a></li>
+                        <li><a href="#" data-view="config-firma">Módulo de Firma</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title" data-toggle="section-comercios">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                        Comercios
+                    </div>
+                    <ul class="sidebar-links" id="section-comercios">
+                        <li><a href="#" data-view="comercios-alta">Alta de Comercio</a></li>
+                        <li><a href="#" data-view="comercios-modificacion">Modificación de Comercio</a></li>
+                        <li><a href="#" data-view="comercios-consulta">Consulta de Comercio</a></li>
+                        <li><a href="#" data-view="comercios-listado">Consulta Listado</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title" data-toggle="section-perfiles">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        Perfiles
+                    </div>
+                    <ul class="sidebar-links" id="section-perfiles">
+                        <li><a href="#" data-view="perfiles-alta">Alta de Perfil</a></li>
+                        <li><a href="#" data-view="perfiles-modificacion">Modificación de Perfil</a></li>
+                        <li><a href="#" data-view="perfiles-baja">Baja de Perfil</a></li>
+                        <li><a href="#" data-view="perfiles-consulta">Consulta de Perfil</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title" data-toggle="section-terminales">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                        Terminales
+                    </div>
+                    <ul class="sidebar-links" id="section-terminales">
+                        <li><a href="#" data-view="terminales-consulta">Consulta de Terminal</a></li>
+                        <li><a href="#" data-view="terminales-consulta-clave">Consulta de Clave</a></li>
+                        <li><a href="#" data-view="terminales-consulta-multiple">Consulta Múltiple</a></li>
+                        <li><a href="#" data-view="terminales-alta">Alta de Terminal</a></li>
+                        <li><a href="#" data-view="terminales-modificacion">Modificación de Terminal</a></li>
+                        <li><a href="#" data-view="terminales-baja">Baja de Terminal</a></li>
+                        <li><a href="#" data-view="terminales-reactivacion">Reactivación de Terminal</a></li>
+                        <li><a href="#" data-view="terminales-alta-metodo">Alta Método de Pago</a></li>
+                        <li><a href="#" data-view="terminales-mod-metodo">Modificación Método Pago</a></li>
+                        <li><a href="#" data-view="terminales-baja-metodo">Baja Método de Pago</a></li>
+                        <li><a href="#" data-view="terminales-consulta-grupos">Consulta de Grupos</a></li>
+                        <li><a href="#" data-view="terminales-alta-grupos">Alta de Grupos</a></li>
+                        <li><a href="#" data-view="terminales-email-bienvenida">Email Bienvenida</a></li>
+                        <li><a href="#" data-view="terminales-email-claves">Email Claves Producción</a></li>
+                        <li><a href="#" data-view="terminales-consulta-operacion">Consulta Operación</a></li>
+                        <li><a href="#" data-view="terminales-consulta-operaciones">Consulta Masiva Operaciones</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="main-content" id="main-content">
+                <!-- Content will be dynamically loaded -->
+            </main>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal-overlay" id="settings-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Configuración del Entorno</h2>
+                <button class="modal-close" id="close-settings">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Entorno</label>
+                    <select id="setting-environment">
+                        <option value="integration">Integración</option>
+                        <option value="production">Producción</option>
+                        <option value="custom">Personalizado</option>
+                    </select>
+                </div>
+                <div class="form-group" id="custom-url-group" style="display:none">
+                    <label>URL Base Personalizada</label>
+                    <input type="text" id="setting-custom-url" placeholder="https://...">
+                </div>
+                <div class="form-group">
+                    <label>RedsysClientId</label>
+                    <input type="text" id="setting-client-id" placeholder="ID de suscripción">
+                </div>
+                <div class="form-group">
+                    <label>RedsysClientSecret</label>
+                    <input type="password" id="setting-client-secret" placeholder="Secret de suscripción">
+                </div>
+                <div class="form-group">
+                    <label>Clave de Firma (HMAC)</label>
+                    <input type="password" id="setting-signing-key" placeholder="Clave para firma HMAC-SHA256">
+                </div>
+                <div class="form-group">
+                    <label>Tipo de Firma</label>
+                    <select id="setting-signature-type">
+                        <option value="HMAC-SHA256">HMAC-SHA256</option>
+                        <option value="HMAC-SHA512">HMAC-SHA512</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="save-settings">Guardar Configuración</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/signature.js"></script>
+    <script src="js/api-client.js"></script>
+    <script src="js/code-examples.js"></script>
+    <script src="js/views/config-views.js"></script>
+    <script src="js/views/comercios-views.js"></script>
+    <script src="js/views/perfiles-views.js"></script>
+    <script src="js/views/terminales-views.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
